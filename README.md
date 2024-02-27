@@ -97,7 +97,7 @@ Sint ea quam exercit
     ```sh
     make
     ```
-    Setelah berhasil, aplikasi sudah bisa diakses pada `http://localhost`. Dan bisa masuk dengan email `admin@nurfachmi.com` dan password `password`.
+    Setelah berhasil, aplikasi sudah bisa diakses pada `http://localhost`. Dan bisa masuk dengan email `admin@perpus.id` dan password `password`.
 
     Selain aplikasi, terdapat juga antarmuka mail server di `http://localhost:8025` dan SMTP server di port `:1025` yang bisa digunakan untuk melihat email yang dikirim dari aplikasi.
 
