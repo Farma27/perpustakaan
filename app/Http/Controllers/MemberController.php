@@ -64,10 +64,10 @@ class MemberController extends Controller
                         'data' => $request->all()
                     ]
                 );
-                return to_route('members.index')->withToastError($th->getMessage());
+                return to_route('member.index')->withToastError($th->getMessage());
             }
 
-            return to_route('members.index')->withToastSuccess($this->title . ' created successfully!');
+            return to_route('member.index')->withToastSuccess($this->title . ' created successfully!');
         }
     }
 

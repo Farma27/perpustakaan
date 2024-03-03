@@ -11,14 +11,14 @@
         <a class="nav-link" href="{{ route('roles.index') }}">{{__('general.roles')}}</a>
     </li>
 @endcan
-@can('modules.index')
+<!-- @can('modules.index')
     <li class="nav-item {{ $isActive('modules.index') }}">
         <a class="nav-link" href="{{ route('modules.index') }}">{{__('general.modules')}}</a>
     </li>
-@endcan
+@endcan -->
 @can('members.index')
-    <li class="nav-item {{ $isActive('members.index') }}">
-        <a class="nav-link" href="{{ route('members.index') }}">{{__('general.members')}}</a>
+    <li class="nav-item {{ $isActive('member.index') }}">
+        <a class="nav-link" href="{{ route('member.index') }}">{{__('general.members')}}</a>
     </li>
 @endcan
 @can('members.index')

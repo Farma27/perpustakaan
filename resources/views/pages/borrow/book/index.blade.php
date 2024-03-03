@@ -52,7 +52,7 @@
                                 $text = 'Return';
                             }
                         @endphp
-                        {{-- <div class="card mt-4">
+                        <div class="card mt-4">
                             <div class="card-header bg-success text-white font-weight-bold">
                                 Confirm to {{ $text }}
                             </div>
@@ -67,7 +67,7 @@
                                     <button type="submit" class="btn btn-success">{{ $text }}</button>
                                 </form>
                             </div>
-                        </div> --}}
+                        </div>
                     @endif
 
                     @if (!$borrow->start_at)

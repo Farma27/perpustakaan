@@ -53,9 +53,9 @@ Route::middleware(['verified', 'auth',])->group(function () {
 
     Route::resource('modules', ModuleController::class)->only('index', 'store');
 
-    Route::resource('members', MemberController::class);
-    Route::as('members.send.')->controller(MemberController::class)->group(function() {
-        Route::get('members/{member}/send/card', 'sendMemberCard')->name('card');
+    Route::resource('member', MemberController::class);
+    Route::as('member.send.')->controller(MemberController::class)->group(function() {
+        Route::get('member/{member}/send/card', 'sendMemberCard')->name('card');
     });
 
     Route::resource('borrows', BorrowController::class);

@@ -18,10 +18,10 @@ class MemberDatatables extends Controller
         return DataTables::of($data)
             ->addColumn('action', function ($row) {
                 $data = [
-                    'edit_url'     => route('members.edit', ['member' => $row->getKey()]),
-                    'delete_url'   => route('members.destroy', ['member' => $row->getKey()]),
-                    'redirect_url' => route('members.index'),
-                    'send_card_url' => route('members.send.card', ['member' => $row->getKey()]),
+                    'edit_url'     => route('member.edit', ['member' => $row->getKey()]),
+                    'delete_url'   => route('member.destroy', ['member' => $row->getKey()]),
+                    'redirect_url' => route('member.index'),
+                    'send_card_url' => route('member.send.card', ['member' => $row->getKey()]),
                     'name'         => $row->name,
                     'resource'     => 'members',
                     'custom_links' => []
@@ -32,7 +32,7 @@ class MemberDatatables extends Controller
                 return view('components.datatable-action', $data);
             })
             ->editColumn('name', function ($row) {
-                return "<a href='" . route('members.show', $row->getKey()) . "' title='Detail' alt='Detail'>$row->name</a>";
+                return "<a href='" . route('member.show', $row->getKey()) . "' title='Detail' alt='Detail'>$row->name</a>";
             })
             ->addColumn('kartu', function ($row) {
                 return $row->card->number;

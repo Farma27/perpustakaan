@@ -21,7 +21,7 @@ class PustakawanSeeder extends Seeder
         $pustakawan = User::updateOrCreate(
             [
                 'name' => 'Pustakawan',
-                'email' => 'pustakawan@nurfachmi.com',
+                'email' => 'pustakawan@perpus.id',
             ],
             [
                 'password' => bcrypt('password'),

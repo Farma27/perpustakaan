@@ -21,7 +21,7 @@ class AnggotaSeeder extends Seeder
         $anggota = User::updateOrCreate(
             [
                 'name' => 'Anggota',
-                'email' => 'anggota@nurfachmi.com',
+                'email' => 'anggota@perpus.id',
             ],
             [
                 'password' => bcrypt('password'),
