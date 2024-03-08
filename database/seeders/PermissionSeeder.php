@@ -6,6 +6,7 @@ use Database\Seeders\Permissions\BorrowPermission;
 use Database\Seeders\Permissions\MemberPermissions;
 use Database\Seeders\Permissions\ModulePermissions;
 use Database\Seeders\Permissions\UserPermissions;
+use Database\Seeders\Permissions\BookPermission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,6 +23,7 @@ class PermissionSeeder extends Seeder
             ModulePermissions::class,
             MemberPermissions::class,
             BorrowPermission::class,
+            BookPermission::class,
         ]);
     }
 }

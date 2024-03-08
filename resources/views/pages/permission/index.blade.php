@@ -34,9 +34,7 @@
                         <tbody>
                             @forelse ($permissions as $id => $permission)
                                 <?php
-                                if ($role->hasPermissionTo($permission)) {
-                                    continue;
-                                }
+                                if ($role->hasPermissionTo($permission)) { continue; }
                                 ?>
                                 <tr data-inactive="inactive{{ $loop->iteration }}">
                                     <td class="text-center">
@@ -74,9 +72,7 @@
                         <tbody>
                             @forelse ($permissions as $id => $permission)
                                 <?php
-                                if (!$role->hasPermissionTo($permission)) {
-                                    continue;
-                                }
+                                if (!$role->hasPermissionTo($permission)) { continue; }
                                 ?>
                                 <tr data-active="active{{ $loop->iteration }}">
                                     <td class="text-center">

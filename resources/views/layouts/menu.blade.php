@@ -21,7 +21,7 @@
         <a class="nav-link" href="{{ route('member.index') }}">{{__('general.members')}}</a>
     </li>
 @endcan
-@can('members.index')
+@can('books.index')
     <li class="nav-item {{ $isActive('books.index') }}">
         <a class="nav-link" href="{{ route('books.index') }}">{{__('general.books')}}</a>
     </li>
