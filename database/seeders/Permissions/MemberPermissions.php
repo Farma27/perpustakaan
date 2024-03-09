@@ -49,6 +49,5 @@ class MemberPermissions extends Seeder
                 ])->toArray()
             );
         }
-
     }
 }

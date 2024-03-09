@@ -36,6 +36,16 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="address" class="col-sm-2 col-form-label">Address</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control @error('address') is-invalid @enderror"
+                                    name="address" id="address" placeholder="Full address">{{ old('address', $member->address) }}</textarea>
+                                @error('address')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="offset-sm-2 col-sm-10">
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>

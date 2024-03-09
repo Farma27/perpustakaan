@@ -44,6 +44,7 @@ class MemberController extends Controller
                 $member->name = $request->name;
                 $member->email = $request->email;
                 $member->email_verified_at = now();
+                $member->address = $request->address;
                 $member->password = fake()->sentence();
                 $member->save();
                 $member->assignRole(User::ROLE_ANGGOTA);
@@ -98,6 +99,7 @@ class MemberController extends Controller
             try {
                 $member->name = $request->name;
                 $member->email = $request->email;
+                $member->address = $request->address;
                 $member->save();
                 DB::commit();
             } catch (\Throwable $th) {
@@ -109,9 +111,9 @@ class MemberController extends Controller
                         'data' => $member
                     ]
                 );
-                return to_route('members.index')->withToastError($th->getMessage());
+                return to_route('member.index')->withToastError($th->getMessage());
             }
-            return to_route('members.index')->withToastSuccess($this->title . ' updated successfully!');
+            return to_route('member.index')->withToastSuccess($this->title . ' updated successfully!');
         }
     }
 
@@ -158,6 +160,7 @@ class MemberController extends Controller
                 'cardMemberNo' => $member->card->number,
                 'cardMemberName' => $member->name,
                 'cardMemberEmail' => $member->email,
+                'cardMemberAddress' => $member->address,
                 'cardMemberExpired' => date('j F, Y', strtotime($member->card->end_date)),
                 'barcodeImage' => $barcodeImage
             ])->render();
@@ -176,9 +179,9 @@ class MemberController extends Controller
                     'data' => $member
                 ]
             );
-            return to_route('members.index')->withToastError($th->getMessage());
+            return to_route('member.index')->withToastError($th->getMessage());
         }
 
-        return to_route('members.index')->withToastSuccess('Member card has been successfully sent!');
+        return to_route('member.index')->withToastSuccess('Member card has been successfully sent!');
     }
 }

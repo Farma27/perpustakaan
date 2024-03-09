@@ -24,6 +24,7 @@ class AnggotaSeeder extends Seeder
                 'email' => 'anggota@perpus.id',
             ],
             [
+                'address' => 'Subang',
                 'password' => bcrypt('password'),
                 'email_verified_at' => now(),
                 'remember_token' => Str::random(10)

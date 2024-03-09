@@ -27,7 +27,7 @@ class BookPermission extends Seeder
         ];
 
         $permissionsByRole = [
-            User::ROLE_ANGGOTA => $roles,
+            User::ROLE_ADMINISTRATOR => $roles,
         ];
 
         $insertPermissions = fn ($role) => collect($permissionsByRole[$role])
@@ -35,7 +35,7 @@ class BookPermission extends Seeder
         ->toArray();
 
         $permissionIdsByRole = [
-            User::ROLE_ANGGOTA => $insertPermissions(User::ROLE_ANGGOTA),
+            User::ROLE_ADMINISTRATOR => $insertPermissions(User::ROLE_ADMINISTRATOR),
         ];
 
         foreach ($permissionIdsByRole as $role => $permissionIds) {
