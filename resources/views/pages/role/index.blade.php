@@ -7,7 +7,7 @@
         <div class="col-lg-12">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-primary font-weight-bold">{{ $title }}</h1>
-                @can('roles.create')
+                <!-- @can('roles.create')
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <a href="{{ route('roles.index') }}" type="button" class="btn btn-primary">New {{ str($title)->singular }}</a>
                         <div class="btn-group" role="group">
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-                @endcan
+                @endcan -->
             </div>
             <div class="card">
                 <div class="card-body">

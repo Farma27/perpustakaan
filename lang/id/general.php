@@ -16,6 +16,7 @@ return [
     'modules' => 'Modul',
     'members' => 'Anggota',
     'books' => 'Buku',
+    'categories' => 'Kategori',
     'borrowing books' => 'Peminjaman Buku',
 
     // User Section

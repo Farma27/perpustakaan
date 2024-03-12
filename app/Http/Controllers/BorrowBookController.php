@@ -35,6 +35,7 @@ class BorrowBookController extends Controller
             $book = Book::firstWhere([
                 'isbn' => $request->number
             ]);
+
             if ($book) {
                 if (empty($borrow->start_at)) {
                     // proses peminjaman

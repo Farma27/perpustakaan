@@ -8,14 +8,14 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
-class MemberPermissions extends Seeder
+class CategoryPermission extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $resource = 'members';
+        $resource = 'categories';
         $roles = [
             $resource . '.index',
             $resource . '.create',
@@ -32,11 +32,11 @@ class MemberPermissions extends Seeder
         ];
 
         $insertPermissions = fn ($role) => collect($permissionsByRole[$role])
-            ->map(fn ($name) => DB::table('permissions')->insertGetId(['name' => $name, 'guard_name' => 'web']))
-            ->toArray();
+        ->map(fn ($name) => DB::table('permissions')->insertGetId(['name' => $name, 'guard_name' => 'web']))
+        ->toArray();
 
         $permissionIdsByRole = [
-            User::ROLE_PUSTAKAWAN => $insertPermissions(User::ROLE_PUSTAKAWAN),
+            User::ROLE_ADMINISTRATOR => $insertPermissions(User::ROLE_ADMINISTRATOR),
         ];
 
         foreach ($permissionIdsByRole as $role => $permissionIds) {

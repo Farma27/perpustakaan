@@ -7,15 +7,17 @@
         <div class="col-lg-12">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-primary font-weight-bold">{{ $title }}</h1>
-                @can('users.create')
+                @can('categories.create')
                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                        <a href="{{ route('users.create') }}" type="button" class="btn btn-primary">New {{ str($title)->singular }}</a>
+                        <a href="{{ route('categories.create') }}" type="button" class="btn btn-primary">
+                            {{ __('kategori.title.create') }}
+                        </a>
                     </div>
                 @endcan
             </div>
             <div class="card">
                 <div class="card-body">
-                    <x-datatable :tableId="'users'" :tableHeaders="['Name', 'Nomor Anggota', 'Email', 'Roles', 'Action']" :tableColumns="[['data' => 'name'], ['data' => 'kartu'], ['data' => 'email'], ['data' => 'jabatan'], ['data' => 'action']]" :getDataUrl="route('datatables.users')" />
+                    <x-datatable :tableId="'categories'" :tableHeaders="[__('kategori.form.category_name'), 'Aksi']" :tableColumns="[['data' => 'category_name'], ['data' => 'action']]" :getDataUrl="route('datatables.categories')" />
                 </div>
             </div>
         </div>

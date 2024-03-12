@@ -26,6 +26,11 @@
         <a class="nav-link" href="{{ route('books.index') }}">{{__('general.books')}}</a>
     </li>
 @endcan
+@can('categories.index')
+    <li class="nav-item {{ $isActive('categories.index') }}">
+        <a class="nav-link" href="{{ route('categories.index') }}">{{__('general.categories')}}</a>
+    </li>
+@endcan
 @can('borrows.index')
     <li class="nav-item {{ $isActive('borrows.index') }}">
         <a class="nav-link" href="{{ route('borrows.index') }}">{{__('general.borrowing books')}}</a>

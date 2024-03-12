@@ -16,6 +16,7 @@ return [
     'modules' => 'Modules',
     'members' => 'Members',
     'books' => 'Books',
+    'categories' => 'Categories',
     'borrowing books' => 'Borrowing Books',
 
     // User Section

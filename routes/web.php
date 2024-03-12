@@ -7,6 +7,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPasswordController;
@@ -66,6 +67,8 @@ Route::middleware(['verified', 'auth',])->group(function () {
     );
 
     Route::resource('books', BookController::class);
+
+    Route::resource('categories', CategoryController::class);
 });
 
 // Route untuk Localization

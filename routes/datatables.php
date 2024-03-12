@@ -7,6 +7,7 @@ use App\Http\Controllers\Datatables\ModuleDatatables;
 use App\Http\Controllers\Datatables\RoleDatatables;
 use App\Http\Controllers\Datatables\UserDatatables;
 use App\Http\Controllers\Datatables\BookDatatables;
+use App\Http\Controllers\Datatables\CategoryDatatables;
 use Illuminate\Support\Facades\Route;
 
 Route::get('roles', RoleDatatables::class)->name('roles');
@@ -16,3 +17,4 @@ Route::get('members', MemberDatatables::class)->name('members');
 Route::get('borrows', BorrowDatatables::class)->name('borrows');
 Route::get('borrow-books/{borrow}', BorrowBookDatatables::class)->name('borrow-books');
 Route::get('books', BookDatatables::class)->name('books');
+Route::get('categories', CategoryDatatables::class)->name('categories');
