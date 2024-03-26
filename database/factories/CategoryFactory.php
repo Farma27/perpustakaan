@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_name' => str(fake('id_ID')->words(fake()->numberBetween(1,3), true))->title()
+            'category_name' => fake('id_ID')->word(),
         ];
     }
 }

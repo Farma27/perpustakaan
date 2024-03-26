@@ -15,7 +15,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <x-datatable :tableId="'users'" :tableHeaders="['Name', 'Nomor Anggota', 'Email', 'Roles', 'Action']" :tableColumns="[['data' => 'name'], ['data' => 'kartu'], ['data' => 'email'], ['data' => 'jabatan'], ['data' => 'action']]" :getDataUrl="route('datatables.users')" />
+                    <x-datatable :tableId="'users'" :tableHeaders="['Name', 'Nomor Anggota', 'Username', 'Email','Roles', 'Action']" :tableColumns="[['data' => 'name'], ['data' => 'kartu'], ['data' => 'username'], ['data' => 'email'], ['data' => 'jabatan'], ['data' => 'action']]" :getDataUrl="route('datatables.users')" />
                 </div>
             </div>
         </div>

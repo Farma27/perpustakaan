@@ -21,18 +21,19 @@ class AnggotaSeeder extends Seeder
         $anggota = User::updateOrCreate(
             [
                 'name' => 'Anggota',
+                'username' => 'anggota',
                 'email' => 'anggota@perpus.id',
             ],
             [
                 'address' => 'Subang',
                 'password' => bcrypt('password'),
-                'email_verified_at' => now(),
                 'remember_token' => Str::random(10)
             ]
         )->assignRole($role_anggota);
 
         $card = Card::updateOrCreate(
             [
+                'user_id' => $anggota->getKey(),
                 'number' => str($anggota->getKey())->padLeft(5, '0')
             ],
             [

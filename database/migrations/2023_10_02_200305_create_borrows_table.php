@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('borrows', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement()->unsigned();
+            $table->integer('id', 6)->autoIncrement()->unsigned();
             $table->Integer('user_id')->unsigned()->index()->constrained()->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('start_at')->nullable();
             $table->date('end_at')->nullable();

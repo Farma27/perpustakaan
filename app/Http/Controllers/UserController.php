@@ -45,6 +45,7 @@ class UserController extends Controller
             DB::beginTransaction();
             $user = new User();
             $user->name = $request->name;
+            $user->username = $request->username;
             $user->email = $request->email;
             $user->password = fake()->word();
             $user->remember_token = Password::getRepository()->create($user);
@@ -58,7 +59,6 @@ class UserController extends Controller
             $card->end_date = now()->addYear();
             $card->save();
             DB::commit();
-            $user->notify(new NewUserNotification($user));
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::error(
@@ -101,18 +101,11 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             $user->name = $request->name;
-            $user->email = $request->email;
-            if ($user->isDirty('email')) {
-                $user->email_verified_at = null;
-                $user->remember_token = Password::getRepository()->create($user);
-            }
+            $user->username = $request->username;
+            $user->remember_token = Password::getRepository()->create($user);
             $user->save();
             $user->syncRoles($request->role);
             DB::commit();
-
-            if (is_null($user->email_verified_at)) {
-                $user->notify(new NewUserNotification($user));
-            }
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::error(

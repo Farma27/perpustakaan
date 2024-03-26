@@ -14,23 +14,6 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $booksCategory = array(
-            "Action",
-            "Adventure",
-            "Comedy",
-            "Drama",
-            "Fantasy",
-            "Horror",
-            "Mystery",
-            "Romance",
-            "Thriller",
-            "Western"
-        );
-
-        foreach ($booksCategory as $category) {
-            Category::factory()->create([
-                'category_name' => $category
-            ]);
-        }
+        Category::factory()->count(10)->create();
     }
 }

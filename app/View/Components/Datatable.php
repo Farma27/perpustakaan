@@ -16,7 +16,7 @@ class Datatable extends Component
         public array $tableHeaders,
         public string $getDataUrl,
         public array $tableColumns,
-        public string  $deleteDataUrl = ''
+        public string $deleteDataUrl = ''
     )
     {
         //

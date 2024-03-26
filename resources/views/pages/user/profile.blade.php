@@ -26,11 +26,21 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <label for="username" class="col-sm-2 col-form-label">Username</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" id="email" value="{{ old('email', auth()->user()->email) }}" placeholder="Email address" readonly>
-                                @error('email')
+                                <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                    name="username" id="username" value="{{ old('username', auth()->user()->username) }}" placeholder="Username" readonly>
+                                @error('username')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="username" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                    name="username" id="username" value="{{ old('username', auth()->user()->username) }}" placeholder="Email Address" readonly>
+                                @error('username')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

@@ -21,17 +21,18 @@ class AdminSeeder extends Seeder
         $administrator = User::updateOrCreate(
             [
                 'name' => 'Administrator',
-                'email' => 'admin@perpus.id',
+                'username' => 'admin',
+                'email' => 'admin@perpus.id'
             ],
             [
                 'password' => bcrypt('password'),
-                'email_verified_at' => now(),
                 'remember_token' => Str::random(10)
             ]
         )->assignRole($role_administrator);
 
         $card = Card::updateOrCreate(
             [
+                'user_id' => $administrator->getKey(),
                 'number' => str($administrator->getKey())->padLeft(5, '0')
             ],
             [

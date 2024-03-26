@@ -65,7 +65,7 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::authenticateUsing(function (Request $request) {
-            $user = User::where('email', $request->email)->first();
+            $user = User::where('username', $request->username)->first();
 
             if (
                 $user &&
@@ -73,10 +73,6 @@ class FortifyServiceProvider extends ServiceProvider
             ) {
                 return $user;
             }
-        });
-
-        Fortify::verifyEmailView(function () {
-            return view('pages.auth.verify-email');
         });
     }
 }

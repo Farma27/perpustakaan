@@ -22,7 +22,7 @@ class VerificationUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|max:191|exists:users,email',
+            'username' => 'required|string|max:255',
             'password' => 'required|string|min:8|confirmed'
         ];
     }

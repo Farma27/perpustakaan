@@ -42,8 +42,8 @@ class MemberController extends Controller
                 DB::beginTransaction();
                 $member = new User();
                 $member->name = $request->name;
+                $member->username = $request->username;
                 $member->email = $request->email;
-                $member->email_verified_at = now();
                 $member->address = $request->address;
                 $member->password = fake()->sentence();
                 $member->save();
@@ -98,6 +98,7 @@ class MemberController extends Controller
             DB::beginTransaction();
             try {
                 $member->name = $request->name;
+                $member->username = $request->username;
                 $member->email = $request->email;
                 $member->address = $request->address;
                 $member->save();
@@ -144,44 +145,5 @@ class MemberController extends Controller
                 'msg' => $th->getMessage()
             ]);
         }
-    }
-
-    /**
-     * Send member card to the member's email address
-     */
-    public function sendMemberCard(User $member)
-    {
-        try {
-            $generatorPNG = new BarcodeGeneratorPNG();
-            $barcodeImage = "data:image/png;base64," . base64_encode($generatorPNG->getBarcode($member->card->number, $generatorPNG::TYPE_CODE_128));
-            // render ID Card HTML view from a blade template
-            $pdfHtml = view('pdf.member.card', [
-                'memberName' => $member->name,
-                'cardMemberNo' => $member->card->number,
-                'cardMemberName' => $member->name,
-                'cardMemberEmail' => $member->email,
-                'cardMemberAddress' => $member->address,
-                'cardMemberExpired' => date('j F, Y', strtotime($member->card->end_date)),
-                'barcodeImage' => $barcodeImage
-            ])->render();
-
-            // generate pdf file for member card based on card data
-            $pdf = app('dompdf.wrapper');
-            $pdf->loadHTML($pdfHtml);
-
-            // then send the email with the attachment to the member's email
-            Mail::to($member)->send(new MemberCard($member, $pdf->output()));
-        } catch (\Throwable $th) {
-            Log::error(
-                $th->getMessage(),
-                [
-                    'action' => 'Send Member card',
-                    'data' => $member
-                ]
-            );
-            return to_route('member.index')->withToastError($th->getMessage());
-        }
-
-        return to_route('member.index')->withToastSuccess('Member card has been successfully sent!');
     }
 }

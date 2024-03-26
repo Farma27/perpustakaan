@@ -29,11 +29,11 @@ use Illuminate\Support\Facades\Route;
 Route::permanentRedirect('home', '/');
 
 Route::as('user-verification.')->controller(UserVerificationController::class)->group(function () {
-    Route::get('user/{email}/{token}/verify', 'index')->name('index');
-    Route::post('user/{email}/{token}/verify', 'store')->name('store');
+    Route::get('user/{username}/{token}/verify', 'index')->name('index');
+    Route::post('user/{username}/{token}/verify', 'store')->name('store');
 });
 
-Route::middleware(['verified', 'auth',])->group(function () {
+Route::middleware(['auth',])->group(function () {
     Route::get('/', HomeController::class)->name('home');
 
     Route::view('/my/password', 'pages.user.password')->name('my-password');

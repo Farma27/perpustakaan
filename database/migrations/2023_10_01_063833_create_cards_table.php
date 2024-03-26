@@ -13,9 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->id();
-            // $table->foreignIdFor(User::class)->nullable()->constrained();
-            $table->string('number')->unique();
+            $table->integer('id', 4)->autoIncrement()->unsigned();
+            $table->integer('user_id')->unsigned()->index()->constrained()->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('number', 5)->unique();
             $table->date('start_date');
             $table->date('end_date');
             $table->tinyInteger('batch')->default(1);

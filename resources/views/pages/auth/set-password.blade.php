@@ -12,15 +12,15 @@
                     Set Up Password
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('user-verification.store', [$email, $token]) }}" method="POST">
+                    <form action="{{ route('user-verification.store', [$Username, $token]) }}" method="POST">
                         @csrf
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                            <label for="Username" class="col-md-4 col-form-label text-md-right">Username</label>
                             <div class="col-md-6">
-                                <input type="email" id="email"
-                                    class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="{{ $email }}" readonly>
-                                @error('email')
+                                <input type="text" id="Username"
+                                    class="form-control @error('Username') is-invalid @enderror" name="Username"
+                                    value="{{ $Username }}" readonly>
+                                @error('Username')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

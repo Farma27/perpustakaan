@@ -13,9 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('borrow_books', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement()->unsigned();
+            $table->integer('id', 6)->autoIncrement()->unsigned();
             $table->integer('borrow_id')->unsigned()->index()->constrained()->foreign('borrow_id')->references('id')->on('borrows')->onDelete('cascade');
-            $table->string('isbn');
+            $table->string('isbn', 13);
             $table->date('return_at')->nullable();
             $table->timestamps();
         });

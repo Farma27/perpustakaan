@@ -150,6 +150,7 @@ return [
     'url'         => 'Format :attribute tidak valid.',
     'ulid'        => ':Attribute harus merupakan ULID yang valid.',
     'uuid'        => ':Attribute harus merupakan UUID yang valid.',
+    'username'    => ':Attribute harus berupa username yang valid.',
 
     /*
     |--------------------------------------------------------------------------

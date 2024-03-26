@@ -14,12 +14,12 @@ class UserVerificationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($email, $token)
+    public function index($username, $token)
     {
         try {
             DB::beginTransaction();
 
-            $user = User::whereEmail($email)->first();
+            $user = User::firstWhere('username', $username);
 
             if (!$user) {
                 throw new \Exception('Pengguna tidak ditemukan.');
@@ -29,7 +29,7 @@ class UserVerificationController extends Controller
                 throw new \Exception('Token tidak ditemukan.');
             }
 
-            $data['email'] = $email;
+            $data['username'] = $username;
             $data['token'] = $token;
 
             DB::commit();
@@ -49,12 +49,12 @@ class UserVerificationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(VerificationUserRequest $request, $email, $token)
+    public function store(VerificationUserRequest $request, $username, $token)
     {
         try {
             DB::beginTransaction();
 
-            $user = User::firstWhere('email', $email);
+            $user = User::firstWhere('username', $username);
 
             if (!$user) {
                 throw new \Exception('Pengguna tidak ditemukan.');
@@ -64,12 +64,10 @@ class UserVerificationController extends Controller
                 throw new \Exception('Token tidak ditemukan.');
             }
 
-            $user->email_verified_at = now();
             $user->remember_token = null;
             $user->password = bcrypt($request->password);
             $user->save();
             DB::commit();
-            $user->notify(new WelcomeNotification($user));
         } catch (\Throwable $th) {
             DB::rollBack();
             Log::error($th->getMessage(), [
@@ -77,7 +75,7 @@ class UserVerificationController extends Controller
                 'user' => $user ?? null
             ]);
 
-            return to_route('user-verification.index', [$email, $token])->withToastError('Oops! ' . $th->getMessage());
+            return to_route('user-verification.index', [$username, $token])->withToastError('Oops! ' . $th->getMessage());
         }
 
         return to_route('login')->withToastSuccess('Congratulation! Your account is ready');

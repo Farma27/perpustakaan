@@ -21,17 +21,18 @@ class PustakawanSeeder extends Seeder
         $pustakawan = User::updateOrCreate(
             [
                 'name' => 'Pustakawan',
+                'username' => 'pustakawan',
                 'email' => 'pustakawan@perpus.id',
             ],
             [
                 'password' => bcrypt('password'),
-                'email_verified_at' => now(),
                 'remember_token' => Str::random(10)
             ]
         )->assignRole($role_pustakawan);
 
         $card = Card::updateOrCreate(
             [
+                'user_id' => $pustakawan->getKey(),
                 'number' => str($pustakawan->getKey())->padLeft(5, '0')
             ],
             [

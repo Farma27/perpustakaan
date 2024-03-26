@@ -13,11 +13,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id', 5)->autoIncrement()->unsigned();
             $table->string("isbn", 13);
             $table->string("title", 100);
             $table->string("author", 50);
-            $table->foreignIdFor(Category::class)->constrained();
+            $table->integer("category_id")->unsigned()->index()->constrained()->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

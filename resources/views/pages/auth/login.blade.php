@@ -15,11 +15,11 @@
                     <form action="{{ url('login') }}" method="POST">
                         @csrf
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
                             <div class="col-md-6">
-                                <input type="email" id="email"
-                                    class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="{{ old('email') }}" autofocus>
+                                <input type="text" id="username"
+                                    class="form-control @error('username') is-invalid @enderror" name="username"
+                                    value="{{ old('username') }}" autofocus>
                                 <div class="invalid-feedback">{{ $message ?? '' }}</div>
                             </div>
                         </div>
