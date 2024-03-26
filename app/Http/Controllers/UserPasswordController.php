@@ -43,10 +43,6 @@ class UserPasswordController extends Controller
         try {
             DB::beginTransaction();
             $user->password = bcrypt($request->password);
-            if (is_null($user->email_verified_at)) {
-                $user->email_verified_at = now();
-                $user->notify(new WelcomeNotification($user));
-            }
             $user->save();
             DB::commit();
         } catch (\Throwable $th) {

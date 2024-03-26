@@ -28,6 +28,7 @@ class BookPermission extends Seeder
 
         $permissionsByRole = [
             User::ROLE_ADMINISTRATOR => $roles,
+            User::ROLE_PUSTAKAWAN => $roles,
         ];
 
         $insertPermissions = fn ($role) => collect($permissionsByRole[$role])

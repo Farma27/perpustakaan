@@ -13,8 +13,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('borrow_books', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(Borrow::class)->constrained();
+            $table->integer('id')->autoIncrement()->unsigned();
+            $table->integer('borrow_id')->unsigned()->index()->constrained()->foreign('borrow_id')->references('id')->on('borrows')->onDelete('cascade');
             $table->string('isbn');
             $table->date('return_at')->nullable();
             $table->timestamps();

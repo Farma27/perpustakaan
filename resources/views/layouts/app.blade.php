@@ -54,7 +54,6 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('my-profile') }}">Update Profile</a>
                                     <a class="dropdown-item" href="{{ route('my-password') }}">Update Password</a>
-                                    <a class="dropdown-item" href="#">Information</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw text-gray-400"></i>

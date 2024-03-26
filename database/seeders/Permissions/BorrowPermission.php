@@ -17,7 +17,6 @@ class BorrowPermission extends Seeder
     {
         $roles = [
             Role::firstWhere('name', User::ROLE_ADMINISTRATOR),
-            Role::firstWhere('name', User::ROLE_PUSTAKAWAN)
         ];
 
         $permissions = [

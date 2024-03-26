@@ -36,7 +36,7 @@ class MemberPermissions extends Seeder
             ->toArray();
 
         $permissionIdsByRole = [
-            User::ROLE_PUSTAKAWAN => $insertPermissions(User::ROLE_PUSTAKAWAN),
+            User::ROLE_ADMINISTRATOR => $insertPermissions(User::ROLE_ADMINISTRATOR),
         ];
 
         foreach ($permissionIdsByRole as $role => $permissionIds) {

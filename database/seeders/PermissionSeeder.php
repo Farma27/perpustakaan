@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Permissions\BookPermission;
 use Database\Seeders\Permissions\BorrowPermission;
 use Database\Seeders\Permissions\MemberPermissions;
 use Database\Seeders\Permissions\ModulePermissions;
 use Database\Seeders\Permissions\UserPermissions;
-use Database\Seeders\Permissions\BookPermission;
 use Database\Seeders\Permissions\CategoryPermission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
