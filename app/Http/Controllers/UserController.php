@@ -48,7 +48,6 @@ class UserController extends Controller
             $user->username = $request->username;
             $user->email = $request->email;
             $user->password = fake()->word();
-            $user->remember_token = Password::getRepository()->create($user);
             $user->save();
             $user->assignRole($request->role);
 
@@ -127,7 +126,7 @@ class UserController extends Controller
     {
         try {
             DB::beginTransaction();
-            $user->delete();
+            $user->forceDelete();
             DB::commit();
 
             return response()->json([
@@ -147,6 +146,5 @@ class UserController extends Controller
                 'msg' => $th->getMessage()
             ]);
         }
-
     }
 }

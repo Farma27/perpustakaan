@@ -28,6 +28,6 @@
 @endcan
 @can('borrows.index')
     <li class="nav-item {{ $isActive('borrows.index') }}">
-        <a class="nav-link" href="#">{{__('general.borrowing books')}}</a>
+        <a class="nav-link" href="{{ route('borrows.index') }}">{{__('general.borrowing books')}}</a>
     </li>
 @endcan

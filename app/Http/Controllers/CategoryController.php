@@ -67,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $data['title'] = __('buku.title.edit');
+        $data['title'] = __('kategori.title.edit');
         $data['category'] = $category;
         return view('pages.category.edit', $data);
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMemberRequest;
+use App\Http\Requests\UpdateMemberRequest;
 use App\Models\Card;
 use App\Models\User;
 use App\Mail\MemberCard;
@@ -36,40 +38,39 @@ class MemberController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    { {
-            try {
-                DB::beginTransaction();
-                $member = new User();
-                $member->name = $request->name;
-                $member->username = $request->username;
-                $member->email = $request->email;
-                $member->address = $request->address;
-                $member->password = fake()->sentence();
-                $member->save();
-                $member->assignRole(User::ROLE_ANGGOTA);
+    public function store(StoreMemberRequest $request)
+    {
+        try {
+            DB::beginTransaction();
+            $member = new User();
+            $member->name = $request->name;
+            $member->username = $request->username;
+            $member->email = $request->email;
+            $member->address = $request->address;
+            $member->password = fake()->word();
+            $member->save();
+            $member->assignRole(User::ROLE_ANGGOTA);
 
-                $card = new Card();
-                $card->user_id = $member->getKey();
-                $card->number = str($member->getKey())->padLeft(5, '0');
-                $card->start_date = now();
-                $card->end_date = now()->addYear();
-                $card->save();
-                DB::commit();
-            } catch (\Throwable $th) {
-                DB::rollBack();
-                Log::error(
-                    $th->getMessage(),
-                    [
-                        'action' => 'Store member',
-                        'data' => $request->all()
-                    ]
-                );
-                return to_route('member.index')->withToastError($th->getMessage());
-            }
-
-            return to_route('member.index')->withToastSuccess($this->title . ' created successfully!');
+            $card = new Card();
+            $card->user_id = $member->getKey();
+            $card->number = str($member->getKey())->padLeft(5, '0');
+            $card->start_date = now();
+            $card->end_date = now()->addYear();
+            $card->save();
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::error(
+                $th->getMessage(),
+                [
+                    'action' => 'Store member',
+                    'data' => $request->all()
+                ]
+            );
+            return to_route('member.index')->withToastError($th->getMessage());
         }
+
+        return to_route('member.index')->withToastSuccess($this->title . ' created successfully!');
     }
 
     /**
@@ -93,7 +94,7 @@ class MemberController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $member)
+    public function update(UpdateMemberRequest $request, User $member)
     { {
             DB::beginTransaction();
             try {
@@ -125,7 +126,7 @@ class MemberController extends Controller
     {
         try {
             DB::beginTransaction();
-            $member->delete();
+            $member->forceDelete();
             DB::commit();
 
             return response()->json([
