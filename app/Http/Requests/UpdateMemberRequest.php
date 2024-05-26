@@ -23,8 +23,8 @@ class UpdateMemberRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:4|max:255',
-            'username' => 'required|string|min:8|max:255|unique:users,username,' . $this->user->id,
-            'email' => 'required|string|email|max:255|unique:users,email,' . $this->user->id,
+            'username' => 'required|string|min:8|max:255|unique:users,username,' . $this->member->id,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $this->member->id,
             'address' => 'required|string'
         ];
     }

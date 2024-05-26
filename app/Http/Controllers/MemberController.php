@@ -95,28 +95,27 @@ class MemberController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateMemberRequest $request, User $member)
-    { {
-            DB::beginTransaction();
-            try {
-                $member->name = $request->name;
-                $member->username = $request->username;
-                $member->email = $request->email;
-                $member->address = $request->address;
-                $member->save();
-                DB::commit();
-            } catch (\Throwable $th) {
-                DB::rollBack();
-                Log::error(
-                    $th->getMessage(),
-                    [
-                        'action' => 'Delete member',
-                        'data' => $member
-                    ]
-                );
-                return to_route('member.index')->withToastError($th->getMessage());
-            }
-            return to_route('member.index')->withToastSuccess($this->title . ' updated successfully!');
+    {
+        DB::beginTransaction();
+        try {
+            $member->name = $request->name;
+            $member->username = $request->username;
+            $member->email = $request->email;
+            $member->address = $request->address;
+            $member->save();
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::error(
+                $th->getMessage(),
+                [
+                    'action' => 'Delete member',
+                    'data' => $member
+                ]
+            );
+            return to_route('member.index')->withToastError($th->getMessage());
         }
+        return to_route('member.index')->withToastSuccess($this->title . ' updated successfully!');
     }
 
     /**
