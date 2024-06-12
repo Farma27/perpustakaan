@@ -12,6 +12,143 @@
     <link rel="stylesheet" href="{{ asset('css/sticky-footer-navbar.css') }}">
 
     @stack('css')
+    <style>
+        .cardTranasaction {
+            height: 27rem;
+            border: 0.1px solid #A39B9B;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .balance-detail {
+            background-color: #D1C4E9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 17rem;
+            box-shadow: 0px 5px #A39B9B;
+            margin-top: -5px; 
+        }
+        .balance-detail p {
+            color: #ffffff;
+            font-size: 1rem;
+            margin-left: -4rem;
+            
+        }
+        .trasaction-history-heading {
+            text-align: center;
+        }
+        .trasaction-history-heading p span {
+            color: #593196;
+            font-weight: bold;
+            margin-left: 1.5rem;
+        }
+        .balance-detail .rp {
+            font-size: 1rem; 
+            color: #6A1B9A;
+            margin-left: -8rem;
+        }
+        .balance-detail h2 {
+            font-size: 2.5rem;
+            color: #6A1B9A;
+            margin-top: -0.8rem;
+        }
+        .trasaction-history-heading {  
+            padding: 10px;
+        }
+
+        .trasaction-history-content {  
+            padding: 10px;
+        }
+
+        .trasaction-history-content h6 {
+            font-weight: bold;
+        }
+
+        .trasaction-history-content p{
+
+        }
+        .trasaction-history-content .count {
+            margin-left: 10rem; 
+            margin-top: -5rem; 
+        }
+
+        .trasaction-history-content p {
+            margin-bottom: 2rem; 
+        }
+        .trasaction-history-content .name {
+            margin-left: 1.5rem; 
+        }
+
+        .trasaction-history-heading p{
+            color: #343A40; 
+            font-size: 3px;
+        }
+        .card {
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .nav-link {
+            color: white !important;
+        }
+        .navbar {
+            background-color: #6A1B9A;
+        }
+        .transaction-history {
+            margin-top: 20px;
+        }
+        .transaction-history p {
+            font-size: 1rem;
+        }
+        .transaction-history a {
+            color: #6A1B9A;
+        }
+        .graph-container {
+            margin-top: 30px;
+        }
+
+        .cardInfo {
+            width: 15rem;
+            height: 5rem;
+            border-radius: 10px;
+            background-color: #EDEDED;
+            overflow: hidden;
+            margin-left: 2rem;
+        }
+
+        .Rectangle {
+            margin-top: -20px; 
+            width: 3rem;
+            height: 3rem;
+            background-color:#f4f1f1;
+            box-shadow: 0px 3px #A39B9B;
+            border-radius: 10px
+        }
+
+        .number {
+            margin-top: -5rem;
+            margin-left: 8.5rem;
+        }
+        .number h4 {
+            color: #593196;
+            font-size: 2.5rem;
+            font-weight: bolder;
+        }
+
+        .textInfo {
+            margin-top: 0.5rem;
+            color: #593196;
+        }
+
+        .garis {
+            background-color: #A39B9B;
+            width: 13.5rem;
+            height: 1px;
+            margin-left: 1rem;
+            margin-top: 1.5rem;
+        }
+
+
+    </style>
 
 </head>
 
@@ -54,6 +191,7 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('my-profile') }}">Update Profile</a>
                                     <a class="dropdown-item" href="{{ route('my-password') }}">Update Password</a>
+                                    <a class="dropdown-item" href="#">Information</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw text-gray-400"></i>
