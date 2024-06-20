@@ -44,12 +44,12 @@ Sint ea quam exercit
 ## Proses Instalasi
 
 - *Fork* repositori ini terlebih dahulu. Lebih senang lagi kalau klik tanda *Star* juga. 
-- Kemudian *clone* ke dalam komputer Anda. `git clone url-repositori`
-- Masuk ke dalam folder projek. `cd perpustakaan` 
-- *Install dependencies*. `composer update`
+- *clone* ke dalam komputer Anda. `git clone url-repositori`
+- Masuk ke dalam folder projek. `cd perpustakaan`
+- *Install dependencies*. `composer install`
 - Salin file env. `cp .env.example .env`
 - Sesuaikan nilai pada env, misalnya kredensial database
-- Masukkan data. `php artisan migrate:fresh --seed`
+- Masukkan data. `php artisan migrate --seed`
 - Jalankan projek. `php artisan serve`
 - Buka di browser `http://localhost:8000`
 
