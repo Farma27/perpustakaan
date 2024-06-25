@@ -119,46 +119,34 @@
     </div>
 @endsection
 
-
 @section('script')
- <script src="https://unpkg.com/html5-qrcode"></script>
- <script>
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+    if ($("#isbn").val() != '') {
+        $("#data-buku").removeClass("disabled")
+    } else {
+        $("#data-buku").addClass("disabled")
+    }
 
-
-        if ($("#isbn").val() != ''){
-
+    $("#isbn").on("input",function (e) {
+        if (e.target.value != ''){
             $("#data-buku").removeClass("disabled")
         } else {
-
             $("#data-buku").addClass("disabled")
         }
+    })
 
-        $("#isbn").on("input",function (e) {
-         if (e.target.value != ''){
-
-            $("#data-buku").removeClass("disabled")
-        } else {
-
-            $("#data-buku").addClass("disabled")
-        }
-        })
-
-        function onScanSuccess(decodedText, decodedResult) {
+    function onScanSuccess(decodedText, decodedResult) {
         $("#isbn").val(decodedText)
         $("#data-buku").toggleClass("disabled")
-        }
+    }
 
 
-        function onScanFailure(error) {
+    function onScanFailure(error) {
         console.warn(`Code scan error = ${error}`);
-        }
+    }
 
-        let html5QrcodeScanner = new Html5QrcodeScanner(
-        "reader",
-        { fps: 10, qrbox: {width: 250, height: 250} },
-        /* verbose= */ false);
-        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-
-
-    </script>
-    @endsection
+    let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: {width: 250, height: 250} }, /* verbose= */ false);
+    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+</script>
+@endsection
