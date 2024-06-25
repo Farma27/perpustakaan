@@ -50,7 +50,9 @@ class Borrow extends Model
 
                 if (empty($this->return_at)) $tanggal_dikembalikan = now();
 
-                return $tanggal_kembali->diffInDays($tanggal_dikembalikan);
+                if ($this->books_returned === 0) return $tanggal_kembali->diffInDays($tanggal_dikembalikan);
+
+                return 0;
             },
         );
     }
@@ -59,7 +61,7 @@ class Borrow extends Model
     {
         return Attribute::make(
             get: function () {
-                return $this->late_days * $this->late_price;
+                if ($this->books_returned === 0) return $this->late_days * $this->late_price;
             }
         );
     }
